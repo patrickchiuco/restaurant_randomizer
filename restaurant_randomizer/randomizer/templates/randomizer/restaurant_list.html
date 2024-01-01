@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+	<div class="row row-cols3 g-2">
+		{% for list in restaurant_list %}
+		<div class="col">
+			<div class='p-3 border'>
+				<a href="{% url 'randomizer:restaurant-list-detail' pk=list.id %}" class='text-dark text-decoration-none'> <h3>{{ list.list_name }}</h3></a>
+				{{ list.description|truncatechars:10}}
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+	<a href='{% url "randomizer:restaurant-list-create" %}' class='btn btn-primary text-decoration-none'>Create List</a>
+	<!--- <ul>
+		{% for note in notes %}
+			<li class='note-li'>{{ note.title }}</li>
+		{% endfor %}
+	</ul> --->
+{% endblock %}

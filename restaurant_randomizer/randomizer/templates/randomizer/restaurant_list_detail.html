@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+	<div class='border round'>
+		<h1 class='my-5'>{{ list.list_name }}</h1>
+		<p>{{ list.description }}</p>
+		<p>{{ list.date_created }}</p>
+		<p>by {{ list.user }}</p>
+	</div>
+	<div class='border round'>
+		<ul>
+			{% for restaurant in list.restaurant_set.all %}
+				<li> <a href="{% url 'randomizer:restaurant-detail' pk=restaurant.id %}">{{ restaurant.restaurant_name }}</a> </li>
+			{% endfor %}
+		</ul>
+	</div>
+	<a href="{% url 'randomizer:restaurant-list'%}" class='btn btn-secondary my-5'>Back</a>
+	<a href="{% url 'randomizer:restaurant-list-update' pk=list.id %}" class='btn btn-secondary my-5'>Edit</a>
+	<a href="{% url 'randomizer:restaurant-list-delete' pk=list.id %}" class='btn btn-danger my-5'>Delete</a>
+	<a href="{% url 'randomizer:restaurant-create' restaurant_list_id=list.id%}" class='btn btn-danger my-5'>Add Restaurant</a>
+	<a href="{% url 'randomizer:randomize' pk=list.id %}" class='btn btn-danger my-5'>Randomize</a>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+	<div class='border round'>
+		<h1 class='my-5'>Result is:</h1>
+		<p>{{ restaurant.restaurant_name }}</p>
+	</div>
+	<a href="{% url 'randomizer:restaurant-list-detail' pk=restaurant_list.id %}" class='btn btn-secondary my-5'>Back</a>
+	<a href="{% url 'randomizer:randomize' pk=restaurant_list.id %}" class='btn btn-secondary my-5'>Randomize Again</a>
+{% endblock %}
